@@ -2,6 +2,5 @@ includes/Conexion.php
 *.sq3
 bdatos/
 adjuntos/
-index.php
-/ b d a t o s / s i g e a . s q 3  
+/bdatos/sigea.sq3  
  
