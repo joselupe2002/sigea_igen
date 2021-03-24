@@ -21,7 +21,7 @@
 	<?php  
 	    session_start();
         session_destroy();
-        //include("./includes/Seguridad.php"); $miSeg = new Seguridad();  echo $miSeg->encriptar("s1g3av2020"); ?>
+      //  include("./includes/Seguridad.php"); $miSeg = new Seguridad();  echo $miSeg->desencriptar("jJ9I^J;IZH|G+H4E)J9J68887777768777766887K"); ?>
 	
 	<body class="login-layout light-login">
 		<div class="main-container">
