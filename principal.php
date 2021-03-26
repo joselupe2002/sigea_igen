@@ -171,7 +171,7 @@
 											 </div>
 											 <div class="col-xs-2" style="text-align: center;"></div>
 											 <div class="col-xs-5" style="text-align: center;">
-											       <img alt="" src="imagenes/empresa/logo2.png" width="40%" height="40%">											
+											       <img alt="" src="imagenes/empresa/logo2.png" width="70%" height="70%">											
 											 </div>
 									</div>	 
 
