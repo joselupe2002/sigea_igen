@@ -66,6 +66,7 @@ contMat=1;
 		   "                <th>Corte</th> "+	
 		   "                <th>CveCarrera</th> "+	
 		   "                <th>Carrera</th> "+	
+		   "                <th>Rep</th> "+	
 		   "                <th>Cve_prof</th> "+	
 		   "                <th>Profesor</th> "+
 		   "                <th>Cve_Materia</th>"+
@@ -110,7 +111,13 @@ contMat=1;
 						success: function(dataH){ 
 								contR=1;
 								grid_data=JSON.parse(dataH);
-								jQuery.each(grid_data, function(clave, valor) { 								
+								jQuery.each(grid_data, function(clave, valor) { 	
+									
+									
+									btnRep="<button title=\"Reporte del Profesor\" onclick=\"verReporte('"+valor.PROFESOR+"');\""+ 
+							            "class=\"btn btn-white btn-success btn-round bigger-100\">"+ 
+								        "<i class=\"ace-icon blue fa fa-file-text bigger-100\"></i><span class=\"btn-small\"></span> "+           
+							            "</button> ";
 									
 									$("#cuerpoInformacion").append("<tr id=\"rowM"+contR+"\">");
 									$("#rowM"+contR).append("<td>"+contR+"</td>");
@@ -119,6 +126,7 @@ contMat=1;
 									$("#rowM"+contR).append("<td>"+elcorte+"</td>");
 									$("#rowM"+contR).append("<td>"+valor.CARRERA+"</td>");
 									$("#rowM"+contR).append("<td>"+valor.CARRERAD+"</td>");
+									$("#rowM"+contR).append("<td>"+btnRep+"</td>");
 									$("#rowM"+contR).append("<td>"+valor.PROFESOR+"</td>");
 									$("#rowM"+contR).append("<td>"+valor.PROFESORD+"</td>");
 									$("#rowM"+contR).append("<td>"+valor.MATERIA+"</td>");								
@@ -272,4 +280,12 @@ function grabarPorcentajes(){
 				 }					     
 			 });    	 
 
+}
+
+
+function verReporte(elprof){
+	enlace="nucleo/repCorte/reporteCorte.php?profesor="+elprof+"&ciclo="+$("#selCiclos").val()+"&corte="+$("#selCortes").val()+
+	"&depto="+$("#selDeptos").val();
+
+	abrirPesta(enlace,"Reporte");
 }
