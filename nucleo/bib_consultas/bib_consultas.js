@@ -115,9 +115,13 @@ jQuery.each(grid_data, function(clave, valor) {
 		"				</div>";
 	if ((numres>=laconfig[0]["MAXRESERVA"]) && !($("#misreservas").prop("checked"))) {botonReserva="";}
 
+	eventoLib="";
+	if (valor.ENLACE!='') { eventoLib="onclick=\"window.open('"+valor.ENLACE+"','_blank');\"";}
+	if (valor.PDF!='') {eventoLib="onclick=\"previewAdjunto('"+valor.PDF+"');\"";}
+
     $("#contenido").append(		
 		"	<div class=\"itemdiv memberdiv\" id=\""+valor.ID+"\">"+
-		"		<div class=\"ma_principal\">"+		
+		"		<div class=\"ma_principal\" "+eventoLib+" >"+		
 		"				<a href=\"#\"><img src=\""+lafoto+"\" class=\"ma_fotoRec\"  /></a><br/>"+		
 		"			<div class=\"body\">"+
 		"				<div class=\"name fontRoboto\">"+
