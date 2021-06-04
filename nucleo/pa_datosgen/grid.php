@@ -26,7 +26,7 @@
         <link href="imagenes/login/sigea.png" rel="image_src" />
         <link rel="stylesheet" href="<?php echo $nivel; ?>assets/css/ui.jqgrid.min.css" />
         <link rel="stylesheet" href="<?php echo $nivel; ?>assets/css/bootstrap-editable.min.css" />
-        
+        <link rel="stylesheet" href="<?php echo $nivel; ?>assets/css/chosen.min.css" />
 
         <style type="text/css">table.dataTable tbody tr.selected {color: blue; font-weight:bold; }</style>
 	</head>
@@ -45,7 +45,7 @@
     				   <div class="space-4"></div>
                       
  	    		       <input class="fileSigea" type="file" id="file_ALUM_FOTO" name="file_ALUM_FOTO" 
- 	    		             onchange="subirArchivNombre('file_ALUM_FOTO','../../adjuntos/ALUM_FOTO/','img_ALUM_FOTO','ALUM_FOTO','jpeg|png|JPG|jpg','<?php echo $_SESSION["usuario"];?>')">
+ 	    		             onchange="subirArchivoDriveName('file_ALUM_FOTO','ALUM_FOTO','img_ALUM_FOTO','ALUM_FOTO','jpeg|png|JPG|jpg','S','<?php echo $_SESSION["usuario"];?>')">
  	    		       
                         <input type="hidden" value=""  name="ALUM_FOTO" id="ALUM_FOTO" placeholder="" />   	
 						<button  onclick="guardarCampo('ALUM_FOTO',true,'La Foto fue asignada correctamente');" class="btn btn-white btn-info btn-bold">
@@ -72,7 +72,7 @@
 							   <div class="col-xs-12 col-sm-9">
 								    <div class="center">
 								         <span class="btn btn-app btn-sm btn-light no-hover">
-								             <span id="periodos" class="line-height-1 bigger-170 blue">3</span>
+								             <span id="periodos" class="line-height-1 bigger-170 blue"></span>
 								             <br />
 										     <span class="line-height-1 smaller-90"> Periodo </span>
 										 </span>
@@ -106,11 +106,34 @@
 													</li>
 
 													<li>
+														<a data-toggle="tab" href="#pesdireccion">
+														<i class="blue ace-icon fa fa-map-marker bigger-120"></i>
+															Dirección													
+														</a>
+													</li>	
+
+
+													<li>
 														<a data-toggle="tab" href="#laboral">
 														<i class="blue ace-icon fa fa-truck bigger-120"></i>
 															Laboral													
 														</a>
-													</li>						
+													</li>	
+
+													<li>
+														<a data-toggle="tab" href="#pesotros">
+														<i class="pink ace-icon fa fa-group bigger-120"></i>
+															Padres													
+														</a>
+													</li>	
+
+													<li>
+														<a data-toggle="tab" href="#pestutor">
+														<i class="red ace-icon fa fa-male bigger-120"></i>
+															Tutor													
+														</a>
+													</li>	
+
 											</ul>	
 											
 											<div class="tab-content">
@@ -130,20 +153,19 @@
 														</div>
 
 
-														<div class="profile-info-row"><div class="profile-info-name">Direcci&oacute;n</div>
-															<div class="input-group">
+														<div class="profile-info-row"><div class="profile-info-name">Estado Nac.</div>
+															<div class="input-group" id="elestadonac">
 																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
-																	<input class="form-control" name="direccion" id="direccion" type="text" />
+																	
 															</div>
 														</div>
 
-
-														<div class="profile-info-row"><div class="profile-info-name">Tel&eacute;fono</div>
-															<div class="input-group">
-																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
-																	<input class="form-control input-mask-phone" name="telefono" id="telefono" type="text" id="form-field-mask-2" />
+														<div class="profile-info-row"><div class="profile-info-name">Municipio Nac.</div>
+															<div class="input-group" id="elmuninac">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
 															</div>
 														</div>
+														
 														
 
 														<div class="profile-info-row"><div class="profile-info-name">e-mail</div>
@@ -168,6 +190,181 @@
 														</div>														
 													</div>
 												</div> <!--  Del contenido del primer tab -->
+
+												<div id="pesdireccion" class="tab-pane fade">
+													<div class="profile-user-info profile-user-info-striped">
+														<div class="profile-info-row"><div class="profile-info-name">Estado Res.</div>
+															<div class="input-group" id="elestadores">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Municipio Res.</div>
+															<div class="input-group" id="elmunires">
+																	<span title="Municipio donde resides" class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Localidad Res.</div>
+															<div class="input-group" id="lalocalidadres">
+																	<span title="" class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Colonia</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_COLONIA" id="ALUM_COLONIA" type="text" />
+															</div>
+														</div>
+
+
+
+														<div class="profile-info-row"><div class="profile-info-name">Direcci&oacute;n</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="direccion" id="direccion" type="text" />
+															</div>
+														</div>
+
+
+														<div class="profile-info-row"><div class="profile-info-name">Tel&eacute;fono</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control input-mask-phone" name="telefono" id="telefono" type="text" id="form-field-mask-2" />
+															</div>
+														</div>		
+													</div>																								
+												</div><!--  Del contenido del segundo tab -->
+
+
+												<div id="pesotros" class="tab-pane fade">
+													<div class="profile-user-info profile-user-info-striped">
+														<div class="profile-info-row"><div class="profile-info-name">Gpo Indigena</div>
+															<div class="input-group" id="elgrupo">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Lengua Indig</div>
+															<div class="input-group" id="lalengua">
+																	<span title="Municipio donde resides" class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														
+														<div class="profile-info-row"><div class="profile-info-name">No. IMSS</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_NOSEGURO" id="ALUM_NOSEGURO" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">¿Padre Vive?</div>
+															<div class="input-group" id="elpadre">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>															
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">¿Madre Vive?</div>
+															<div class="input-group" id="lamadre">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>															
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Nombre Padre</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_PADRE" id="ALUM_PADRE" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Nombre Madre</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_MADRE" id="ALUM_MADRE" type="text" />
+															</div>
+														</div>
+
+	
+													</div>																								
+												</div><!--  Del contenido del tercer tab -->
+
+
+												<div id="pestutor" class="tab-pane fade">
+													<div class="profile-user-info profile-user-info-striped">
+														<div class="profile-info-row"><div class="profile-info-name">Nombre Tutor</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTOR" id="ALUM_TUTOR" type="text" />
+															</div>
+														</div>
+													
+														<div class="profile-info-row"><div class="profile-info-name">Estado Res.</div>
+															<div class="input-group" id="elestadotut">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Municipio Res.</div>
+															<div class="input-group" id="elmunitut">
+																	<span title="Municipio donde resides" class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Localidad Res.</div>
+															<div class="input-group" id="lalocalidadtut">
+																	<span title="" class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>																	
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Dirección</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORDIR" id="ALUM_TUTORDIR" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Cod. Postal</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORCP" id="ALUM_TUTORCP" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Colonia</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORCOL" id="ALUM_TUTORCOL" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Teléfono</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORTEL" id="ALUM_TUTORTEL" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Correo</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORCORREO" id="ALUM_TUTORCORREO" type="text" />
+															</div>
+														</div>
+
+														<div class="profile-info-row"><div class="profile-info-name">Centro Trabajo</div>
+															<div class="input-group">
+																	<span class="input-group-addon"><i class="ace-icon fa fa-pencil red"></i></span>
+																	<input class="form-control" name="ALUM_TUTORTRABAJO" id="ALUM_TUTORTRABAJO" type="text" />
+															</div>
+														</div>
+
+	
+													</div>																								
+												</div><!--  Del contenido del CUARTO tab -->
+
+
 												<div id="laboral" class="tab-pane fade">
 													<div class="profile-user-info profile-user-info-striped">		
 
@@ -254,6 +451,7 @@
 <script src="<?php echo $nivel; ?>assets/js/dataTables.select.min.js"></script>
 <script src="<?php echo $nivel; ?>assets/js/jquery.jqGrid.min.js"></script>
 <script src="<?php echo $nivel; ?>assets/js/grid.locale-en.js"></script>
+<script src="<?php echo $nivel; ?>assets/js/chosen.jquery.min.js"></script>
 
 
 
@@ -273,6 +471,8 @@
 <script src="<?php echo $nivel; ?>assets/js/bootstrap-editable.min.js"></script>
 <script src="<?php echo $nivel; ?>assets/js/ace-editable.min.js"></script>
 
+
+<script src="<?php echo $nivel; ?>js/utilerias.js?v=<?php echo date('YmdHis'); ?>"></script>
 
 
 <script type="text/javascript">
@@ -329,8 +529,10 @@
 	
 	
 
-		elsql="SELECT alum_matricula, alum_foto,concat(alum_nombre,' ',alum_apepat,' ',alum_apemat) as alum_nombrec,alum_direccion, alum_telefono, alum_correo, "+
-		             " CARR_DESCRIP AS alum_carreraregd, alum_cicloins, getcuatrialum(alum_matricula, getciclo()) AS CUAT,"+
+		elsql="SELECT alum_matricula, getPeriodos(ALUM_MATRICULA,getciclo()) as PERIODOS, alum_foto,concat(alum_nombre,' ',alum_apepat,' ',alum_apemat) as alum_nombrec,alum_direccion, alum_telefono, alum_correo, "+
+		             " ALUM_EDONAC, ALUM_ESTADO, ALUM_MUNINAC, ALUM_MUNICIPIO, ALUM_LOCALIDAD, ALUM_PADRE, ALUM_MADRE, ALUM_PADREVIVE, ALUM_MADREVIVE,"+
+					 "ALUM_TUTOR, ALUM_TUTORESTADO, ALUM_TUTORMUNICIPIO, ALUM_TUTORDIR, ALUM_TUTORLOC, ALUM_TUTORCP, ALUM_TUTORCOL, ALUM_TUTORDIR, ALUM_TUTORTRABAJO, ALUM_TUTORTEL, ALUM_TUTORCORREO,"+
+					 " ALUM_COLONIA, ALUM_NOSEGURO, LENIND, GPOIND, CARR_DESCRIP AS alum_carreraregd, alum_cicloins, getcuatrialum(alum_matricula, getciclo()) AS CUAT,"+
                      " alum_correo AS CORREO,alum_telefono AS TEL, alum_tutor AS TUTOR, ALUM_TRABAJO, ALUM_TELTRABAJO, ALUM_DIRTRABAJO "+
 					 " FROM falumnos, ccarreras  WHERE alum_matricula='<?php echo $_SESSION['usuario'];?>' and ALUM_CARRERAREG=CARR_CLAVE";
 		parametros={sql:elsql,dato:sessionStorage.co,bd:"Mysql"}
@@ -346,10 +548,10 @@
 		    	  	    $('#nombreal').html(valor.alum_nombrec);		    	  	  
 		    	  	    $('#ALUM_CICLOINS').html(valor.alum_cicloins);
 
-		    	  	   $('#promedio').html(valor.PROM_SR);
-		    	  	   $('#reprobadas').html(valor.NUMREP);
-		    	  	   
-		    	
+		    	  	    $('#promedio').html(valor.PROM_SR);
+						$('#periodos').html(valor.PERIODOS);
+		    	  	    $('#reprobadas').html(valor.NUMREP);
+		    	  	   		    	
 						  
 						$('#direccion').val(valor.alum_direccion);
 		    	  	    $('#telefono').val(valor.alum_telefono);
@@ -360,11 +562,62 @@
 						$('#teltrabajo').val(valor.ALUM_TELTRABAJO);
 						$('#dirtrabajo').val(valor.ALUM_DIRTRABAJO);
 						
-		    	  	    $('#matricula').html(valor.alum_matricula);
+		    	  	     $('#matricula').html(valor.alum_matricula);
 						  $('#carrera').html(valor.alum_carreraregd);					
 						  $('#img_ALUM_FOTO').attr("src",valor.alum_foto);
 						  $('#ALUM_FOTO').val(valor.alum_foto);
+
+						  elsql="SELECT id_estado, estado from cat_estado order by estado";
+						  addSELECT_CONVALOR("ALUM_EDONAC","elestadonac","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_EDONAC);  	
+
+						  elsql="SELECT id_municipio, municipio from cat_municipio where id_estado='"+valor.ALUM_EDONAC+"' order by municipio";
+						  addSELECT_CONVALOR("ALUM_MUNINAC","elmuninac","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_MUNINAC); 
+
+						  elsql="SELECT id_estado, estado from cat_estado order by estado";
+						  addSELECT_CONVALOR("ALUM_ESTADO","elestadores","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_ESTADO);  	
+
+						  elsql="SELECT id_municipio, municipio from cat_municipio where id_estado='"+valor.ALUM_ESTADO+"' order by municipio";
+						  addSELECT_CONVALOR("ALUM_MUNICIPIO","elmunires","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_MUNICIPIO); 
+
+						  elsql="SELECT id_localidad, localidad from cat_localidad where id_estado='"+valor.ALUM_ESTADO+"' and id_municipio='"+valor.ALUM_MUNICIPIO+"' order by localidad";
+						  addSELECT_CONVALOR("ALUM_LOCALIDAD","lalocalidadres","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_LOCALIDAD); 
+
+						  elsql="SELECT idgrupo, descrip from grupoindigena  order by idgrupo";
+						  addSELECT_CONVALOR("GPOIND","elgrupo","PROPIO",elsql, "","BUSQUEDA",valor.GPOIND); 
+
+						  elsql="SELECT idlengua, descrip from lenguaindigena  order by idlengua";
+						  addSELECT_CONVALOR("LENIND","lalengua","PROPIO",elsql, "","BUSQUEDA",valor.LENIND); 
 		    	    	 
+						  $('#ALUM_NOSEGURO').val(valor.ALUM_NOSEGURO);
+						  $('#ALUM_COLONIA').val(valor.ALUM_COLONIA);
+
+						  elsql="SELECT 'S', 'S' FROM DUAL UNION SELECT 'N','N' FROM DUAL ";
+						  addSELECT_CONVALOR("ALUM_PADREVIVE","elpadre","PROPIO",elsql, "","",valor.ALUM_PADREVIVE); 
+
+				
+						  elsql="SELECT 'S', 'S' FROM DUAL UNION SELECT 'N','N' FROM DUAL ";
+						  addSELECT_CONVALOR("ALUM_MADREVIVE","lamadre","PROPIO",elsql, "","",valor.ALUM_MADREVIVE);
+						  $('#ALUM_PADRE').val(valor.ALUM_PADRE);
+						  $('#ALUM_MADRE').val(valor.ALUM_MADRE);
+
+						  elsql="SELECT id_estado, estado from cat_estado order by estado";
+						  addSELECT_CONVALOR("ALUM_TUTORESTADO","elestadotut","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_TUTORESTADO);  	
+
+						  elsql="SELECT id_municipio, municipio from cat_municipio where id_estado='"+valor.ALUM_ESTADO+"' order by municipio";
+						  addSELECT_CONVALOR("ALUM_TUTORMUNICIPIO","elmunitut","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_TUTORMUNICIPIO); 
+
+						  elsql="SELECT id_localidad, localidad from cat_localidad where id_estado='"+valor.ALUM_TUTORESTADO+"' and id_municipio='"+valor.ALUM_TUTORMUNICIPIO+"' order by localidad";
+						  addSELECT_CONVALOR("ALUM_TUTORLOC","lalocalidadtut","PROPIO",elsql, "","BUSQUEDA",valor.ALUM_TUTORLOC); 
+
+
+						  $('#ALUM_TUTOR').val(valor.ALUM_TUTOR);
+						  $('#ALUM_TUTORDIR').val(valor.ALUM_TUTORDIR);
+						  $('#ALUM_TUTORCP').val(valor.ALUM_TUTORCP);
+						  $('#ALUM_TUTORCOL').val(valor.ALUM_TUTORCOL);
+						  $('#ALUM_TUTORTEL').val(valor.ALUM_TUTORTEL);
+						  $('#ALUM_TUTORCORREO').val(valor.ALUM_TUTORCORREO);
+						  $('#ALUM_TUTORTRABAJO').val(valor.ALUM_TUTORTRABAJO);
+
 		    	      });		    
 		
 		
@@ -403,6 +656,21 @@
    });// Fin del ready 
 
 
+
+function change_SELECT(elemento) {
+	if (elemento=='ALUM_EDONAC') {
+		elsql="SELECT id_municipio, municipio from cat_municipio where id_estado='"+$("#ALUM_EDONAC").val()+"' order by municipio";
+		actualizaSelect("ALUM_MUNINAC",elsql,"BUSQUEDA","");}
+
+	if (elemento=='ALUM_ESTADO') {
+		elsql="SELECT id_municipio, municipio from cat_municipio where id_estado='"+$("#ALUM_ESTADO").val()+"' order by municipio";
+		actualizaSelect("ALUM_MUNICIPIO",elsql,"BUSQUEDA","");}
+	
+	if (elemento=='ALUM_LOCALIDAD') {
+		elsql="SELECT id_localidad, localidad from cat_localidad where id_estado='"+valor.ALUM_ESTADO+"' and id_municipio='"+valor.ALUM_MUNICIPIO+"' order by localidad";
+		actualizaSelect("ALUM_LOCALIDAD",elsql,"BUSQUEDA","");}	
+}  
+
 function guardar(){
 
 	
@@ -418,14 +686,33 @@ function guardar(){
 				ALUM_TRABAJO:$("#trabajo").val(),
 				ALUM_TELTRABAJO:$("#teltrabajo").val(),
 				ALUM_DIRTRABAJO:$("#dirtrabajo").val(),
+				ALUM_EDONAC:$("#ALUM_EDONAC").val(),
+				ALUM_MUNINAC:$("#ALUM_MUNINAC").val(),
+				ALUM_ESTADO:$("#ALUM_ESTADO").val(),
+				ALUM_MUNICIPIO:$("#ALUM_MUNICIPIO").val(),
+				ALUM_LOCALIDAD:$("#ALUM_LOCALIDAD").val(),
+				ALUM_COLONIA:$("#ALUM_COLONIA").val(),
 				
-		    	//ALUM_TUTOR:$("#ALUM_TUTOR").val(),
-		    	//ALUM_TELTUTOR:$("#ALUM_TELTUTOR").val(),
-		    	//ALUM_PARENTESCO:$("#ALUM_PARENTESCO").val(),
-		    	//ALUM_TIPOSANGRE:$("#ALUM_TIPOSANGRE").val(),
-		    	//ALUM_ALERGIAS:$("#ALUM_ALERGIAS").val(),
-		    	//ALUM_MEDICOCAB:$("#ALUM_MEDICOCAB").val(),
-		    	//ALUM_DIRMEDICO:$("#ALUM_DIRMEDICO").val()
+				GPOIND:$("#GPOIND").val(),
+				LENIND:$("#LENIND").val(),
+				ALUM_NOSEGURO:$("#ALUM_NOSEGURO").val(),
+				ALUM_SEGUROORD:$("#ALUM_NOSEGURO").val(),
+				ALUM_PADRE:$("#ALUM_PADRE").val(),
+				ALUM_MADRE:$("#ALUM_MADRE").val(),
+				ALUM_PADREVIVE:$("#ALUM_PADREVIVE").val(),
+				ALUM_MADREVIVE:$("#ALUM_MADREVIVE").val(),
+			
+		    	ALUM_TUTOR:$("#ALUM_TUTOR").val(),
+				ALUM_TUTORESTADO:$("#ALUM_TUTORESTADO").val(),
+				ALUM_TUTORMUNICIPIO:$("#ALUM_TUTORMUNICIPIO").val(),
+				ALUM_TUTORLOC:$("#ALUM_TUTORLOC").val(),
+				ALUM_TUTORDIR:$("#ALUM_TUTORDIR").val(),
+				ALUM_TUTORCP:$("#ALUM_TUTORCP").val(),
+				ALUM_TUTORCOL:$("#ALUM_TUTORCOL").val(),
+				ALUM_TUTORTEL:$("#ALUM_TUTORTEL").val(),
+				ALUM_TUTORCORREO:$("#ALUM_TUTORCORREO").val(),
+				ALUM_TUTORTRABAJO:$("#ALUM_TUTORTRABAJO").val(),
+		    	
 		      };
 		    		
        $('#dlgproceso').modal({backdrop: 'static', keyboard: false});	         
@@ -507,6 +794,7 @@ function verMaterias(tipo){
 				    	    content:content,
 				    	    closable:true		    
 				    	});
+	   //window.open(enlace, '_blank'); 
       }
 
    

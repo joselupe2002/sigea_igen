@@ -125,7 +125,7 @@
 			{				
                 $miConex = new Conexion();
                 $sql="SELECT MATRICULA, NOMBRE,MATERIA, MATERIAD, SEMESTRE,CREDITO,TIPOMAT, VECES, PRIMERA, SEGUNDA, TERCERA, ".
-                "(CASE WHEN (TIPOMAT='AC' or TIPOMAT='SS') THEN 'AC'  ELSE max(CAL) END) AS CAL,".
+                "(CASE WHEN TIPOMAT='AC' THEN 'AC'  ELSE max(CAL) END) AS CAL,".
                 " MAX(TCAL) as TCAL FROM kardexcursadas  where MATRICULA='".$_GET["matricula"]."' AND CERRADO='S' ".
                 " GROUP BY  MATRICULA, NOMBRE,MATERIA, MATERIAD, SEMESTRE,CREDITO,TIPOMAT, VECES, PRIMERA, SEGUNDA, TERCERA ".
                 " ORDER BY SEMESTRE, MATERIAD";
@@ -438,10 +438,12 @@
             if (is_numeric($row["CAL"]) && ($row["TIPOMAT"]!='SS')) {$sumacursadas+=$row["CAL"]; $cursadas++; }            
         }
 
-        $pdf->parseVar('{matapr}',$materiasaprobadas); // convertimos la variable.
+        if ($materiasaprobadas>0) {
+            $pdf->parseVar('{matapr}',$materiasaprobadas); // convertimos la variable.
+        }
+        else {$pdf->parseVar('{matapr}'," ");}
         $pdf->parseVar('{promreprobadas}',round($sumacursadas/($cursadas),0)); // Sacamos el promedio con materias reprobadas
-        //$pdf->parseVar('{matcursadas}',$cursadas); // convertimos la variable de materias cursadas
-        $pdf->parseVar('{matcursadas}',$materiasaprobadas); // convertimos la variable de materias cursadas
+        $pdf->parseVar('{matcursadas}',$cursadas); // convertimos la variable de materias cursadas
 
 //=====================================================================================================
 if (count($data2)>0) {
@@ -549,7 +551,7 @@ if (count($data2)>0) {
         $pdf->SetWidths(array(10,15,70, 10,10,10,30,15,15,10));
         $pdf->Ln();
         $pdf->Cell(0,5,utf8_decode('Nota: Este Reporte solo es válido para los trámites internos avalados '.
-        'por la Dirección General del ITSSMO y para uso personal de alumno.'),0,0,'J',true);
+        'por la Dirección General del ITSM y para uso personal de alumno.'),0,0,'J',true);
 
 
         $cadena= "FECHA:".str_replace("/","",$fecha)."|".str_replace(" ","|",$dataAlum[0]["ALUM_MATRICULA"]).
