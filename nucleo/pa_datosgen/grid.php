@@ -529,7 +529,7 @@
 	
 	
 
-		elsql="SELECT alum_matricula, getPeriodos(ALUM_MATRICULA,getciclo()) as PERIODOS, alum_foto,concat(alum_nombre,' ',alum_apepat,' ',alum_apemat) as alum_nombrec,alum_direccion, alum_telefono, alum_correo, "+
+		elsql="SELECT alum_matricula, ALUM_SEXO, getPeriodos(ALUM_MATRICULA,getciclo()) as PERIODOS, alum_foto,concat(alum_nombre,' ',alum_apepat,' ',alum_apemat) as alum_nombrec,alum_direccion, alum_telefono, alum_correo, "+
 		             " ALUM_EDONAC, ALUM_ESTADO, ALUM_MUNINAC, ALUM_MUNICIPIO, ALUM_LOCALIDAD, ALUM_PADRE, ALUM_MADRE, ALUM_PADREVIVE, ALUM_MADREVIVE,"+
 					 "ALUM_TUTOR, ALUM_TUTORESTADO, ALUM_TUTORMUNICIPIO, ALUM_TUTORDIR, ALUM_TUTORLOC, ALUM_TUTORCP, ALUM_TUTORCOL, ALUM_TUTORDIR, ALUM_TUTORTRABAJO, ALUM_TUTORTEL, ALUM_TUTORCORREO,"+
 					 " ALUM_COLONIA, ALUM_NOSEGURO, LENIND, GPOIND, CARR_DESCRIP AS alum_carreraregd, alum_cicloins, getcuatrialum(alum_matricula, getciclo()) AS CUAT,"+
