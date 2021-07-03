@@ -126,7 +126,7 @@
 								<i class="ace-icon fa fa-caret-down"></i>
 							</a>
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li onclick="generales();"> <a><i class="ace-icon fa fa-cog"></i>Generales</a> </li>
+								<li onclick="generales();"> <a><i class="ace-icon fa fa-cog"></i>Ocultar Iconos</a> </li>
 								<li onclick="cambioClave();"> <a><i class="ace-icon fa fa-key"></i>Contrase&ntilde;a</a></li>
 								<li class="divider"></li>
                                 <li> <a href="cierraSesion.php?pag=index.php"><i class="ace-icon fa fa-power-off"></i>Cerrar Sesi&oacute;n</a></li>
@@ -445,16 +445,8 @@
 				}
 
 
-		function generales(){	
-			   var url="generales.php";
-			   var alto=$(window).height()+"px";
-			   var content = '<iframe scrolling = "auto"  frameborder="0" id="cambioClave" src="'+url+'" style="overflow-x:hidden;width:100%;height:'+alto+';"></iframe></div>';	
-			     $('#myTab').tabs('add',{
-			    	    title:"Generales",
-			    	   content:content,
-			    	    closable:true		    
-			    	});
-			     $('html, body').animate({scrollTop:0}, 'slow');
+				function generales(){				  
+			     $('#menuRapido').addClass("hide");
 				}
 		
 		
