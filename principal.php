@@ -223,7 +223,10 @@
 		</div><!-- /.main-container -->
 
 
-         
+         	<!-- MENU DE ACCESO RAPIDO  -->
+		<div class="sticky-container"><ul class="sticky" id="menuRapido"></ul></div>
+
+		
 		<script src="assets/js/jquery-2.1.4.min.js"></script>
          <script type="text/javascript"> 
 		     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -335,7 +338,13 @@
    						    
                             if (valor.modu_pred==" ") {$("#miMenu").append(cad);}
                             else {$("#S_"+valor.modu_pred).append(cad);} 
-                                					          
+                               
+								
+							/*============MENU DE ACCESO RAPIDO ==============*/						
+								if (valor.modu_rapido=='S') {								
+								$("#menuRapido").append("<li><a title=\""+valor.modu_descrip+"\" "+elclick+" >"+
+				   					"<i class=\""+valor.modu_rapico+"\"></i></a></li>");								
+							}
 				});
 				
 				

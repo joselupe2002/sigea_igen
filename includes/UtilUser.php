@@ -700,7 +700,7 @@ class UtilUser {
 	   $util= new UtilUser();
 	   $miConexU = new Conexion();
 	  
-	   $sq="select distinct(modu_modulo), modu_pred, modu_descrip, modu_aplicacion,
+	   $sq="select distinct(modu_modulo), modu_pred, modu_rapido, modu_rapico, modu_descrip, modu_aplicacion,
                    modu_version, modu_ejecuta, modu_icono, modu_imaico, modu_cancel, modu_teclarap, 
                    modu_auxiliar, modu_automatico, derm_modulo, modu_pagina, derm_inserta, derm_edita, derm_borra, derm_detalle,modu_bd
                    from SDERMODU,CMODULOS where 
