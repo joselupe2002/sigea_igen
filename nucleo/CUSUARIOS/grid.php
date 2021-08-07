@@ -237,7 +237,7 @@
 						parametros={
 							modulo:"<?php echo $_GET['modulo'];?>",
 							bd:"<?php echo $_GET['bd'];?>",
-							loscamposf:loscamposf,
+							//loscamposf:loscamposf,
 							losdatosf:losdatosf,
 							limitar:"<?php echo $_GET['limitar'];?>",
 							dato:sessionStorage.co						
